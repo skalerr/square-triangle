@@ -6,5 +6,5 @@ public interface IShape
     /// Вычисляет площадь.
     /// </summary>
     /// <returns></returns>
-    double GetArea();
+    decimal GetArea();
 }

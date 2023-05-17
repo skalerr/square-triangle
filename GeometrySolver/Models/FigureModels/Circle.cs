@@ -4,9 +4,9 @@ namespace ClassLibrary1.Models.FigureModels;
 
 public class Circle : IShape
 {
-    private readonly double _radius;
+    private readonly decimal _radius;
 
-    public Circle(double radius)
+    public Circle(decimal radius)
     {
         this._radius = radius;
     }
@@ -15,8 +15,8 @@ public class Circle : IShape
     /// Вычисляет значение площади круга с помощью формулы площади круга PI*R^2.
     /// </summary>
     /// <returns>Возвращает значение площади круга.</returns>
-    public double GetArea()
+    public decimal GetArea()
     {
-        return Math.PI * Math.Pow(_radius, 2);
+        return new decimal(Math.PI * Math.Pow((double) _radius, 2));
     }
 }

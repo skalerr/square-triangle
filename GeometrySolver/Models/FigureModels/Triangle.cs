@@ -4,11 +4,11 @@ namespace ClassLibrary1.Models.FigureModels;
 
 public class Triangle : IShape
 {
-    private readonly double _a;
-    private readonly double _b;
-    private readonly double _c;
+    private readonly decimal _a;
+    private readonly decimal _b;
+    private readonly decimal _c;
 
-    public Triangle(double a, double b, double c)
+    public Triangle(decimal a, decimal b, decimal c)
     {
         this._a = a;
         this._b = b;
@@ -19,10 +19,10 @@ public class Triangle : IShape
     /// Вычисление площади через формулу Герона.
     /// </summary>
     /// <returns>Возвращает площадь треугольника.</returns>
-    public double GetArea()
+    public decimal GetArea()
     {
-        double p = (_a + _b + _c) / 2;
-        return Math.Sqrt(p * (p - _a) * (p - _b) * (p - _c));
+        decimal p = (_a + _b + _c) / 2;
+        return (decimal) Math.Sqrt((double) (p * (p - _a) * (p - _b) * (p - _c)));
     }
     /// <summary>
     /// Метод IsTriangleRectangular() проверяет, является ли треугольник прямоугольным.
@@ -31,8 +31,9 @@ public class Triangle : IShape
     /// <returns>Если условие верно, то метод возвращает true, иначе false.</returns>
     public bool IsTriangleRectangular()
     {
-        return Math.Pow(_a, 2) + Math.Pow(_b, 2) == Math.Pow(_c, 2) ||
-               Math.Pow(_a, 2) + Math.Pow(_c, 2) == Math.Pow(_b, 2) ||
-               Math.Pow(_b, 2) + Math.Pow(_c, 2) == Math.Pow(_a, 2);
+        return  (_a * _a + _b * _b == _c * _c) 
+                || (_a * _a + _c * _c == _b * _b) 
+                || (_b * _b + _c * _c == _a * _a);
     }
+    
 }

@@ -2,27 +2,47 @@ using ClassLibrary1.Models.FigureModels;
 using NUnit.Framework;
 
 namespace UnitTest;
-
 [TestFixture]
 public class ShapeTest
 {
     [Test]
     public void TestCircleArea()
     {
+        decimal expected = 78.5398163397448m;
+
         Circle c = new Circle(5);
-        Assert.AreEqual(78.53981633974483, c.GetArea(), 0.001);
+        decimal actual = c.GetArea();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [Test]
     public void TestTriangleArea()
     {
-        Triangle t = new Triangle(3, 4, 5);
-        Assert.AreEqual(6, t.GetArea(), 0.001);
+        decimal a = 3;
+        decimal b = 4;
+        decimal c = 5;
+        decimal expected = 6;
+
+        Triangle t = new Triangle(a, b, c);
+
+        decimal actual = t.GetArea();
+
+        Assert.AreEqual(expected, actual);
     }
+
     [Test]
-    public void TestIsRight()
+    public void TestRightTriangle()
     {
-        Triangle t = new Triangle(3, 4, 5);
-        Assert.IsTrue(t.IsTriangleRectangular());
+        decimal a = 3;
+        decimal b = 4;
+        decimal c = 5;
+    
+        bool expected = true;
+        Triangle t = new Triangle(a, b ,c);
+
+        bool actual = t.IsTriangleRectangular();
+    
+        Assert.AreEqual(expected, actual);
     }
 }
